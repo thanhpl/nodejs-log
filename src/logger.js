@@ -20,6 +20,7 @@ const customFormat = printf(({ level, message, timestamp }) => {
 });
  
 const logger = createLogger({
+    level: 'debug', // Level to log message
     format: combine(
         format.timestamp({
             format: 'YYYY-MM-DD HH:mm:ss' // Local time by timezone
@@ -32,3 +33,14 @@ const logger = createLogger({
 });
 
 module.exports = logger
+
+/*
+const levels = { 
+    error: 0, 
+    warn: 1, 
+    info: 2, 
+    verbose: 3, 
+    debug: 4, 
+    silly: 5 
+  };
+*/

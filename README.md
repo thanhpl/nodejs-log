@@ -15,7 +15,8 @@ node .\test\loggerTest.js
 
 Output log file D:/logs/
 ```
-2019-03-21 16:00:33 [info] This is info log
-2019-03-21 16:00:33 [warn] This is warning
-2019-03-21 16:00:33 [error] An error happened
+2019-03-21 21:35:18 [info] This is info log
+2019-03-21 21:35:18 [warn] This is warning
+2019-03-21 21:35:18 [error] An error happened
+2019-03-21 21:35:18 [debug] Debug message
 ```
