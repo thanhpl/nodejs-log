@@ -1,15 +1,17 @@
 # nodejs-log
 Sample logging of nodejs application:
-* Format log in local time by timezone.
-* Rotate file daily automatically.
+* Format log in local time by timezone
+* Rotate file automatically everyday
+* Delete old logs with `maxFiles` property
 
-Using modules
+Using modules:
 * [winston](https://www.npmjs.com/package/winston)
 * [winston-daily-rotate-file](https://www.npmjs.com/package/winston-daily-rotate-file)
 
 Test: 
-
-`node .\test\loggerTest.js`
+```
+node .\test\loggerTest.js
+```
 
 Output log file D:/logs/
 ```
