@@ -1,5 +1,6 @@
+'use strict'
 const { createLogger, format, transports } = require('winston')
-const { combine, printf } = format;
+const { combine, label, printf } = format;
 require('winston-daily-rotate-file');
  
 var transport = new (transports.DailyRotateFile)({
@@ -15,22 +16,28 @@ transport.on('rotate', function(oldFilename, newFilename) {
     // Handle rotate event
 });
 
-const customFormat = printf(({ level, message, timestamp }) => {
-    return `${timestamp} [${level}] ${message}`;
+const customFormat = printf(({ level, message, label, timestamp }) => {
+    return `${timestamp} ${level.toUpperCase()} [${label}] ${message}`;
 });
- 
-const logger = createLogger({
-    level: 'debug', // Level to log message
-    format: combine(
-        format.timestamp({
-            format: 'YYYY-MM-DD HH:mm:ss' // Local time by timezone
-        }),
-        customFormat
-      ),
-    transports: [
-      transport
-    ]
-});
+
+const logger = function(moduleName) {
+    if (moduleName === null || moduleName.trim() === '') {
+        moduleName = 'unknown_module'
+    }
+    return createLogger({
+        level: 'debug', // Level to log message
+        format: combine(
+            label({ label: moduleName }),
+            format.timestamp({
+                format: 'YYYY-MM-DD HH:mm:ss' // Local time by timezone
+            }),
+            customFormat
+          ),
+        transports: [
+          transport
+        ]
+    });
+}
 
 module.exports = logger
 
