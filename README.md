@@ -8,10 +8,16 @@ Using modules:
 * [winston](https://www.npmjs.com/package/winston)
 * [winston-daily-rotate-file](https://www.npmjs.com/package/winston-daily-rotate-file)
 
-To use logger in your module: 
+### To use logger in your module: 
+Install dependencies:
 ```
+$ npm install --save winston winston-daily-rotate-file
+```
+
+Make a clone of `src/logger.js` and use it as:
+```js
 const logger = require('./logger')('loggerTest') // loggerTest is module name
-...
+//...
 logger.info('This is info log')
 logger.warn('This is warning')
 logger.error('An error happened')
@@ -29,4 +35,4 @@ Output log file D:/logs/
 2019-03-28 14:06:25 WARN [loggerTest] This is warning
 2019-03-28 14:06:25 ERROR [loggerTest] An error happened
 2019-03-28 14:06:25 DEBUG [loggerTest] Debug message
-```
+``` 
