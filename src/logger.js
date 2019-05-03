@@ -1,4 +1,9 @@
 'use strict'
+
+/*
+* Logger into seperated files by day
+*/
+
 const { createLogger, format, transports } = require('winston')
 const { combine, label, printf } = format;
 require('winston-daily-rotate-file');
@@ -8,7 +13,7 @@ var transport = new (transports.DailyRotateFile)({
     filename: 'application-%DATE%.log',
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
-    maxSize: '20m',
+    maxSize: '5m',
     maxFiles: '30d'
 });
  
